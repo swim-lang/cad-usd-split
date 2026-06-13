@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CAD to USD Split</title>
+    <meta
+      name="description"
+      content="A simple brutalist Canada to U.S. dollar converter with tip and split math."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page" data-converter>
+      <section class="frame" aria-labelledby="title">
+        <header class="bar">
+          <span>CAD / USD</span>
+          <span>TIP + SPLIT</span>
+        </header>
+
+        <section class="hero">
+          <div>
+            <p>CANADA TO U.S. DOLLAR</p>
+            <h1 id="title">CONVERT. TIP. SPLIT.</h1>
+          </div>
+          <aside>
+            <span>DEFAULT RATE</span>
+            <strong>1 CAD = 0.7146 USD</strong>
+          </aside>
+        </section>
+
+        <form class="inputs">
+          <label class="field field-main">
+            <span>Tab in CAD</span>
+            <input type="number" min="0" step="0.01" inputmode="decimal" value="120" data-input="cad" />
+          </label>
+          <label class="field">
+            <span>CAD to USD rate</span>
+            <input type="number" min="0" step="0.0001" inputmode="decimal" value="0.7146" data-input="rate" />
+          </label>
+          <label class="field">
+            <span>Tip percent</span>
+            <input type="number" min="0" step="1" inputmode="decimal" value="20" data-input="tip" />
+          </label>
+          <label class="field">
+            <span>Split by</span>
+            <input type="number" min="1" step="1" inputmode="numeric" value="2" data-input="people" />
+          </label>
+        </form>
+
+        <div class="tip-buttons" aria-label="Tip shortcuts">
+          <button type="button" data-tip="15">15%</button>
+          <button type="button" data-tip="18">18%</button>
+          <button type="button" data-tip="20">20%</button>
+          <button type="button" data-tip="25">25%</button>
+        </div>
+
+        <section class="results" aria-live="polite">
+          <article class="result result-primary">
+            <span>Each pays</span>
+            <strong data-output="each">$0.00</strong>
+          </article>
+          <article class="result">
+            <span>Subtotal USD</span>
+            <strong data-output="subtotal">$0.00</strong>
+          </article>
+          <article class="result">
+            <span>Tip USD</span>
+            <strong data-output="tip">$0.00</strong>
+          </article>
+          <article class="result">
+            <span>Total USD</span>
+            <strong data-output="total">$0.00</strong>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
