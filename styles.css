@@ -211,6 +211,11 @@ input {
     min-height: calc(100vh - 40px);
   }
 
+  .frame > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .bar {
     min-height: 72px;
     padding: 0 16px;
@@ -237,7 +242,7 @@ input {
   }
 
   .hero h1 {
-    font-size: clamp(56px, 17vw, 112px);
+    font-size: clamp(48px, 15vw, 112px);
   }
 
   .hero aside {
