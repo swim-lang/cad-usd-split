@@ -8,7 +8,7 @@
       name="description"
       content="A simple brutalist Canada to U.S. dollar converter with tip and split math."
     />
-    <link rel="stylesheet" href="styles.css?v=two-tabs-2" />
+    <link rel="stylesheet" href="styles.css?v=simple-rate-hidden-1" />
   </head>
   <body>
     <main class="page" data-converter>
@@ -32,10 +32,6 @@
             <p>CANADA TO U.S. DOLLAR</p>
             <h1 id="title" data-title>CONVERT.</h1>
           </div>
-          <aside>
-            <span>DEFAULT RATE</span>
-            <strong>1 CAD = 0.7146 USD</strong>
-          </aside>
         </section>
 
         <section class="mode-panel is-active" id="panel-simple" role="tabpanel" aria-labelledby="tab-simple" data-mode-panel="simple">
@@ -44,10 +40,6 @@
               <span>Amount in CAD</span>
               <input type="number" min="0" step="0.01" inputmode="decimal" value="120" data-input="simpleCad" />
             </label>
-            <label class="field">
-              <span>CAD to USD rate</span>
-              <input type="number" min="0" step="0.0001" inputmode="decimal" value="0.7146" data-input="simpleRate" />
-            </label>
           </form>
 
           <section class="results results-simple" aria-live="polite">
@@ -55,26 +47,14 @@
               <span>USD total</span>
               <strong data-output="simpleUsd">$0.00</strong>
             </article>
-            <article class="result">
-              <span>CAD entered</span>
-              <strong data-output="simpleCad">$0.00</strong>
-            </article>
-            <article class="result">
-              <span>Rate used</span>
-              <strong data-output="simpleRate">0.7146</strong>
-            </article>
           </section>
         </section>
 
         <section class="mode-panel" id="panel-dinner" role="tabpanel" aria-labelledby="tab-dinner" hidden data-mode-panel="dinner">
-          <form class="inputs">
+          <form class="inputs inputs-dinner">
             <label class="field field-main">
               <span>Tab in CAD</span>
               <input type="number" min="0" step="0.01" inputmode="decimal" value="120" data-input="cad" />
-            </label>
-            <label class="field">
-              <span>CAD to USD rate</span>
-              <input type="number" min="0" step="0.0001" inputmode="decimal" value="0.7146" data-input="rate" />
             </label>
             <label class="field">
               <span>Tip percent</span>
@@ -115,6 +95,6 @@
       </section>
     </main>
 
-    <script src="script.js?v=two-tabs-2"></script>
+    <script src="script.js?v=simple-rate-hidden-1"></script>
   </body>
 </html>

@@ -41,25 +41,16 @@ function setMode(mode) {
 
 function updateSimple() {
   const cad = Math.max(0, valueFor("simpleCad"));
-  const rate = Math.max(0, valueFor("simpleRate", DEFAULT_RATE));
-  const total = cad * rate;
+  const total = cad * DEFAULT_RATE;
 
   output("simpleUsd").textContent = money.format(total);
-  output("simpleCad").textContent = new Intl.NumberFormat("en-CA", {
-    style: "currency",
-    currency: "CAD",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(cad);
-  output("simpleRate").textContent = rate.toFixed(4);
 }
 
 function updateDinner() {
   const cad = Math.max(0, valueFor("cad"));
-  const rate = Math.max(0, valueFor("rate", DEFAULT_RATE));
   const tipPercent = Math.max(0, valueFor("tip"));
   const people = Math.max(1, Math.round(valueFor("people", 1)));
-  const subtotal = cad * rate;
+  const subtotal = cad * DEFAULT_RATE;
   const tip = subtotal * (tipPercent / 100);
   const total = subtotal + tip;
 

@@ -107,9 +107,6 @@ input {
 .hero {
   align-items: end;
   border-bottom: 4px solid var(--black);
-  display: grid;
-  gap: 36px;
-  grid-template-columns: 1fr 360px;
   padding: 52px 30px;
 }
 
@@ -126,20 +123,6 @@ input {
   max-width: 1080px;
 }
 
-.hero aside {
-  background: var(--yellow);
-  border: 4px solid var(--black);
-  display: grid;
-  gap: 14px;
-  padding: 26px;
-}
-
-.hero aside strong {
-  font-size: 31px;
-  font-weight: 900;
-  line-height: 1;
-}
-
 .inputs,
 .results {
   display: grid;
@@ -152,11 +135,11 @@ input {
 
 .inputs-simple,
 .results-simple {
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1fr;
 }
 
-.results-simple {
-  grid-template-columns: 1.35fr 1fr 1fr;
+.inputs-dinner {
+  grid-template-columns: 1.4fr repeat(2, minmax(0, 1fr));
 }
 
 .field {
@@ -286,9 +269,6 @@ input {
   }
 
   .hero {
-    align-items: stretch;
-    gap: 28px;
-    grid-template-columns: 1fr;
     padding: 34px 18px;
   }
 
@@ -296,18 +276,10 @@ input {
     font-size: clamp(48px, 15vw, 112px);
   }
 
-  .hero aside {
-    gap: 10px;
-    padding: 18px;
-  }
-
-  .hero aside strong {
-    font-size: 24px;
-  }
-
   .inputs,
   .results,
   .inputs-simple,
+  .inputs-dinner,
   .results-simple {
     grid-template-columns: 1fr;
   }
