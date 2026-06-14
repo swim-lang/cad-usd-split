@@ -52,6 +52,7 @@ input {
 }
 
 .bar span,
+.tabs button,
 .hero p,
 .hero aside span,
 .field span,
@@ -70,6 +71,37 @@ input {
   border: 3px solid var(--black);
   color: var(--white);
   padding: 14px 16px;
+}
+
+.tabs {
+  border-bottom: 4px solid var(--black);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tabs button {
+  appearance: none;
+  background: var(--white);
+  border: 0;
+  border-right: 4px solid var(--black);
+  color: var(--black);
+  cursor: pointer;
+  min-height: 76px;
+}
+
+.tabs button:last-child {
+  border-right: 0;
+}
+
+.tabs button.is-active {
+  background: var(--black);
+  color: var(--white);
+}
+
+.tabs button:hover,
+.tabs button:focus-visible {
+  box-shadow: inset 0 -8px 0 var(--yellow);
+  outline: 0;
 }
 
 .hero {
@@ -112,6 +144,19 @@ input {
 .results {
   display: grid;
   grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+}
+
+.mode-panel[hidden] {
+  display: none;
+}
+
+.inputs-simple,
+.results-simple {
+  grid-template-columns: 1.35fr 1fr;
+}
+
+.results-simple {
+  grid-template-columns: 1.35fr 1fr 1fr;
 }
 
 .field {
@@ -222,6 +267,7 @@ input {
   }
 
   .bar span,
+  .tabs button,
   .hero p,
   .hero aside span,
   .field span,
@@ -232,6 +278,11 @@ input {
 
   .bar span:last-child {
     padding: 12px;
+  }
+
+  .tabs button {
+    min-height: 62px;
+    padding: 0 10px;
   }
 
   .hero {
@@ -255,7 +306,9 @@ input {
   }
 
   .inputs,
-  .results {
+  .results,
+  .inputs-simple,
+  .results-simple {
     grid-template-columns: 1fr;
   }
 

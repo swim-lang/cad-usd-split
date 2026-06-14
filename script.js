@@ -20,7 +20,41 @@ function valueFor(name, fallback = 0) {
   return Number.isFinite(value) ? value : fallback;
 }
 
-function update() {
+function setMode(mode) {
+  const isDinner = mode === "dinner";
+  converter.dataset.mode = mode;
+  converter.querySelector("[data-title]").textContent = isDinner ? "DINNER SPLIT." : "CONVERT.";
+  converter.querySelector("[data-mode-label]").textContent = isDinner ? "DINNER SPLIT" : "SIMPLE CONVERTER";
+
+  converter.querySelectorAll("[data-mode-tab]").forEach((tab) => {
+    const isActive = tab.dataset.modeTab === mode;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  converter.querySelectorAll("[data-mode-panel]").forEach((panel) => {
+    const isActive = panel.dataset.modePanel === mode;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+function updateSimple() {
+  const cad = Math.max(0, valueFor("simpleCad"));
+  const rate = Math.max(0, valueFor("simpleRate", DEFAULT_RATE));
+  const total = cad * rate;
+
+  output("simpleUsd").textContent = money.format(total);
+  output("simpleCad").textContent = new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(cad);
+  output("simpleRate").textContent = rate.toFixed(4);
+}
+
+function updateDinner() {
   const cad = Math.max(0, valueFor("cad"));
   const rate = Math.max(0, valueFor("rate", DEFAULT_RATE));
   const tipPercent = Math.max(0, valueFor("tip"));
@@ -36,9 +70,20 @@ function update() {
   output("each").textContent = money.format(total / people);
 }
 
+function update() {
+  updateSimple();
+  updateDinner();
+}
+
 converter.querySelectorAll("[data-input]").forEach((field) => {
   field.addEventListener("input", update);
   field.addEventListener("change", update);
+});
+
+converter.querySelectorAll("[data-mode-tab]").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    setMode(tab.dataset.modeTab);
+  });
 });
 
 converter.querySelectorAll("[data-tip]").forEach((button) => {
@@ -48,4 +93,5 @@ converter.querySelectorAll("[data-tip]").forEach((button) => {
   });
 });
 
+setMode("simple");
 update();
